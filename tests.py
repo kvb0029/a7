@@ -1,6 +1,7 @@
 import unittest
 from unittest.mock import patch
 import io
+from ELS import *
 
 # Assuming the main script is named e_learning_system.py, and the functions are imported here.
 # from e_learning_system import users, register_user, login_user, add_course, enroll_course, grades, assign_grades, ...

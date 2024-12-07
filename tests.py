@@ -1,11 +1,11 @@
 import unittest
 from unittest.mock import patch
 import io
+from ELS import add_course, assign_grades, enroll_course, generate_certificate, leave_feedback
 
 class TestELearningSystem(unittest.TestCase):
 
     def setUp(self):
-        # Reset data before each test
         global users, courses, user_courses, assessments, grades, feedback, course_progress
         users = {"admin": "admin123", "student1": "password1"}
         courses = {"C001": "Python Programming", "C002": "Data Structures"}
@@ -27,15 +27,15 @@ class TestELearningSystem(unittest.TestCase):
             self.assertIn("C002", user_courses["student1"])
 
     def test_assign_grades_success(self):
-        user_courses["student1"].append("C002")  # Ensure student is enrolled in C002
+        user_courses["student1"].append("C002")
         with patch('builtins.input', side_effect=["student1", "C002", "B"]):
             assign_grades()
             self.assertIn("C002", grades["student1"])
             self.assertEqual(grades["student1"]["C002"], "B")
 
     def test_generate_certificate_success(self):
-        grades["student1"]["C002"] = "B"  # Ensure grade is assigned for C002
-        user_courses["student1"].append("C002")  # Ensure enrollment in C002
+        grades["student1"]["C002"] = "B"
+        user_courses["student1"].append("C002")
         with patch('builtins.input', side_effect=["C002"]):
             with patch('sys.stdout', new_callable=io.StringIO) as fake_output:
                 generate_certificate("student1")

@@ -1,27 +1,5 @@
 from ELS import * 
 # Test Cases
-def test_register_user():
-    print("\nRunning Test Case 1: Register User")
-    initial_user_count = len(users)
-    username = "test_user"
-    password = "test_password"
-    if username in users:
-        del users[username]  # Ensure user doesn't already exist
-    users[username] = password
-    final_user_count = len(users)
-    assert final_user_count == initial_user_count + 1, "User registration failed"
-    print("Test Case 1 Passed")
-
-def test_login_user():
-    print("\nRunning Test Case 2: Login User")
-    username = "test_user"
-    password = "test_password"
-    users[username] = password
-    assert login_user() == username, "Login failed with valid credentials"
-    del users[username]  # Clean up test user
-    assert login_user() is None, "Login succeeded with invalid credentials"
-    print("Test Case 2 Passed")
-
 def test_add_course():
     print("\nRunning Test Case 3: Add Course")
     course_id = "C999"

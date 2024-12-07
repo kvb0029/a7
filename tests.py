@@ -1,3 +1,4 @@
+from ELS import * 
 # Test Cases
 def test_register_user():
     print("\nRunning Test Case 1: Register User")

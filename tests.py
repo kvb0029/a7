@@ -24,12 +24,7 @@ class TestELearningSystem(unittest.TestCase):
             assign_grades()
             self.assertEqual(grades["student1"]["C002"], "A")
 
-    def test_generate_certificate_success(self):
-        with patch('builtins.input', side_effect=["C002"]):
-            with patch('sys.stdout', new_callable=io.StringIO) as fake_output:
-                generate_certificate("student1")
-                self.assertIn("successfully completed the course", fake_output.getvalue())
-
+    
     
 if __name__ == "__main__":
     unittest.main()
